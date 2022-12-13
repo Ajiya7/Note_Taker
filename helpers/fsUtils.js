@@ -1,5 +1,5 @@
-const fs = require('fs');
-const util = require('util');
+const fs = require("fs");
+const util = require("util");
 
 const readFromFile = util.promisify(fs.readFile);
 
@@ -9,7 +9,7 @@ const writeToFile = (destination, content) =>
   );
 
 const readAndAppend = (content, file) => {
-  fs.readFile(file, 'utf8', (err, data) => {
+  fs.readFile(file, "utf8", (err, data) => {
     if (err) {
       console.error(err);
     } else {
@@ -20,4 +20,18 @@ const readAndAppend = (content, file) => {
   });
 };
 
-module.exports = { readFromFile, writeToFile, readAndAppend };
+ const readAndDelete = (id, file) => {
+  fs.readFile(file, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+    }
+    console.log(data)
+    const parsedData = JSON.parse(data);
+    const filterNotes = parsedData.filter((notes)=>
+    notes.id!== id)
+    writeToFile(file, filterNotes);
+    return filterNotes;
+  });
+};
+
+module.exports = { readFromFile, writeToFile, readAndAppend, readAndDelete };

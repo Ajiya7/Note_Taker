@@ -1,40 +1,43 @@
-const notes = require('express').Router();
-const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
+const notes = require("express").Router();
+const { readAndAppend, readFromFile, readAndDelete } = require("../helpers/fsUtils");
+const uuid = require("../helpers/uuid");
+const db = require("../db/db.json")
 
-notes.get('/', (req, res) => {
-    readFromFile('./db/db.json').then((data) =>res.json(JSON.parse(data))
-    );
+notes.get("/", (req, res) => {
+  readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
 });
 
-notes.post('/', (req, res) => {
-    const { title, text } = req.body;
+notes.post("/", (req, res) => {
+  const { title, text } = req.body;
 
-    if (title && text) {
+  if (title && text) {
+    const note = {
+      title,
+      text,
+      id: uuid()
+    };
 
-      const note = {
-        title,
-        text
-      };
-  
-      readAndAppend(note, './db/db.json');
-  
-      const response = {
-        status: 'success',
-        body: note,
-      };
-  
-      res.json(response);
-    } else {
-      res.json('Error in posting note');
-    }
+    readAndAppend(note, "./db/db.json");
+
+    const response = {
+      status: "success",
+      body: note,
+    };
+
+    res.json(response);
+  } else {
+    res.json("Error in posting note");
+  }
 });
 
-// notes.get("/:title", (req,res) =>
-//     res.json(notes[req.params.title])
-// );
+notes.get("/:id", (req,res) =>
+    res.json(notes[req.params.id])
+);
 
-// notes.delete("/:title",(req, res) =>
-//     res.splice(req.params.title, 1)
-// );
+notes.delete("/:id",(req, res) =>{
+  let data = readAndDelete(req.params.id, "./db/db.json")
+  res.json(data)
+}
+);
 
-  module.exports = notes;
+module.exports = notes;

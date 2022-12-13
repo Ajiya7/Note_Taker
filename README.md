@@ -3,14 +3,16 @@
 ![License](https://img.shields.io/badge/license-MIT-blue "License Badge")
 
 ## Table of Contents
-  - [Description](#description)
-  - [User Story](#user-story)
-  - [Acceptance Criteria](#acceptance-criteria)
-  - [Screenshot](#screenshot)
-  - [Contact Me](#contact-me)
+
+- [Description](#description)
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Screenshot](#screenshot)
+- [Contact Me](#contact-me)
 
 ## Description
 
+This is a web application that is hosted on heroku that is used to create notes and the notes can also be saved , edited or rewritten and also deleted.
 
 ## User Story
 
@@ -19,7 +21,6 @@ AS A small business owner
 I WANT to be able to write and save notes
 SO THAT I can organize my thoughts and keep track of tasks I need to complete
 ```
-
 
 ## Acceptance Criteria
 
@@ -38,15 +39,20 @@ THEN that note appears in the right-hand column
 WHEN I click on the Write icon in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 ```
+
 ## Screenshot
-![App Screenshot]()
+
+![App Screenshot](./screenshot/Screenshot%202022-12-12%20at%206.17.38%20PM.png)
 
 ## Contact Me
-- Instagram: _ajiya
+
+- Instagram: \_ajiya
 - Email: Ajiyafaruk@gmail.com
 
 ### Anyone Can Contribute
 
 ### Link to my github: https://github.com/Ajiya7
-### Link to repo: https://github.com/Ajiya7/Team_profile_generator 
+
+### Link to repo: https://github.com/Ajiya7/Note_Taker
+
 ### Link to deployed apllication: 
