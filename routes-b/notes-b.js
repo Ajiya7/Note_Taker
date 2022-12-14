@@ -1,7 +1,11 @@
 const notes = require("express").Router();
-const { readAndAppend, readFromFile, readAndDelete } = require("../helpers/fsUtils");
+const {
+  readAndAppend,
+  readFromFile,
+  readAndDelete,
+} = require("../helpers/fsUtils");
 const uuid = require("../helpers/uuid");
-const db = require("../db/db.json")
+const db = require("../db/db.json");
 
 notes.get("/", (req, res) => {
   readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
@@ -14,7 +18,7 @@ notes.post("/", (req, res) => {
     const note = {
       title,
       text,
-      id: uuid()
+      id: uuid(),
     };
 
     readAndAppend(note, "./db/db.json");
@@ -30,14 +34,11 @@ notes.post("/", (req, res) => {
   }
 });
 
-notes.get("/:id", (req,res) =>
-    res.json(notes[req.params.id])
-);
+notes.get("/:id", (req, res) => res.json(notes[req.params.id]));
 
-notes.delete("/:id",(req, res) =>{
-  let data = readAndDelete(req.params.id, "./db/db.json")
-  res.json(data)
-}
-);
+notes.delete("/:id", (req, res) => {
+  let data = readAndDelete(req.params.id, "./db/db.json");
+  res.json(data);
+});
 
 module.exports = notes;
