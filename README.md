@@ -55,4 +55,4 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ### Link to repo: https://github.com/Ajiya7/Note_Taker
 
-### Link to deployed apllication: 
+### Link to deployed apllication: https://calm-crag-68926.herokuapp.com/
